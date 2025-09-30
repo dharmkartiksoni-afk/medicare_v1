@@ -1,0 +1,270 @@
+:root {
+  color-scheme: light;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: #0f172a;
+  color: #e2e8f0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgba(15, 23, 42, 0.95);
+  border-right: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.sidebar header h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.controls input {
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(15, 23, 42, 0.8);
+  color: inherit;
+}
+
+.controls button {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: none;
+  background: linear-gradient(135deg, #22d3ee, #6366f1);
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.controls button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.controls button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.hint {
+  color: #94a3b8;
+}
+
+.error {
+  color: #f87171;
+}
+
+.graph-area {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.graph-container {
+  position: relative;
+  flex: 1;
+}
+
+.graph-overlay {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.75rem;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  z-index: 2;
+}
+
+.graph-stats {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.graph-legend {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.8rem;
+  color: #cbd5f5;
+}
+
+.graph-legend span {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+}
+
+.graph-reset {
+  padding: 0.45rem 0.8rem;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: rgba(14, 23, 42, 0.6);
+  color: #e2e8f0;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.2s ease;
+}
+
+.graph-reset:hover {
+  background: rgba(45, 59, 89, 0.95);
+}
+
+.loading,
+.empty-state {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(15, 23, 42, 0.8);
+  padding: 1rem 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.search-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.search-form input {
+  flex: 1;
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(15, 23, 42, 0.7);
+  color: inherit;
+}
+
+.search-form button {
+  padding: 0.6rem 1rem;
+  border-radius: 0.6rem;
+  border: none;
+  background: #22d3ee;
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.search-results {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.result-card {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.7);
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.result-card .score {
+  font-weight: 700;
+  color: #38bdf8;
+  min-width: 3ch;
+}
+
+.chunk-detail {
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  background: rgba(15, 23, 42, 0.6);
+  flex: 1;
+  overflow-y: auto;
+}
+
+.chunk-detail.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+}
+
+.chunk-detail h3 {
+  margin-top: 0;
+}
+
+.chunk-detail .key-points ul,
+.chunk-detail .qa ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.chunk-detail ul li + li {
+  margin-top: 0.5rem;
+}
+
+@media (max-width: 1024px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  }
+
+  .graph-area {
+    min-height: 60vh;
+  }
+
+  .graph-overlay {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+}
